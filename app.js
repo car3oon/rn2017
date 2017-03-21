@@ -17,10 +17,19 @@ const App = (props) => {
 
   return (
     <View style={container}>
-      <Text style={text}>Example Data</Text>
-      <TouchableHighlight style={button} onPress={() => props.fetchData()}>
-        <Text style={buttonText}>Load Data</Text>
-      </TouchableHighlight>
+      { !props.appData.data.length ? (
+        <View>
+          <Text style={text}>Example Data</Text>
+          <TouchableHighlight style={button} onPress={() => props.fetchData()}>
+            <Text style={buttonText}>Load Data</Text>
+          </TouchableHighlight>
+        </View>
+        ) : (
+          <View>
+            <Text style={text}>Example Data</Text>
+          </View>
+        )
+      }
       <View style={mainContent}>
         {
           props.appData.isFetching && <Text>Loading</Text>

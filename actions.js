@@ -2,12 +2,14 @@ import { FETCHING_DATA, FETCHING_DATA_SUCCESS, FETCHING_DATA_FAILURE } from './c
 import getPeople from './api'
 
 export function getData () {
+  console.log('FETCHING_DATA')
   return {
     type: FETCHING_DATA
   }
 }
 
 export function getDataSuccess (data) {
+  console.log('FETCHING_DATA_SUCCESS')
   return {
     type: FETCHING_DATA_SUCCESS,
     data
@@ -15,6 +17,7 @@ export function getDataSuccess (data) {
 }
 
 export function getDataFailure () {
+  console.log(FETCHING_DATA_FAILURE)
   return {
     type: FETCHING_DATA_FAILURE
   }
