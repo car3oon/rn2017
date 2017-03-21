@@ -11,15 +11,32 @@ const App = (props) => {
     container,
     text,
     button,
-    buttonText
+    buttonText,
+    mainContent
   } = styles
 
   return (
     <View style={container}>
-      <Text style={text}>Example data</Text>
-      <TouchableHighlight style={button}>
+      <Text style={text}>Example Data</Text>
+      <TouchableHighlight style={button} onPress={() => props.fetchData()}>
         <Text style={buttonText}>Load Data</Text>
       </TouchableHighlight>
+      <View style={mainContent}>
+        {
+          props.appData.isFetching && <Text>Loading</Text>
+        }
+        {
+          props.appData.data.length ? (
+            props.appData.data.map((person, i) => {
+              return <View key={i} >
+                <Text>Name: {person.name}</Text>
+                <Text>Age: {person.age}</Text>
+                <Text>Bio: {person.bio}</Text>
+              </View>
+            })
+          ) : null
+        }
+      </View>
     </View>
   )
 }
@@ -40,6 +57,9 @@ styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white'
+  },
+  mainContent: {
+    margin: 10
   }
 })
 
